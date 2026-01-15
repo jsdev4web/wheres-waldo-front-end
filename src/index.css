@@ -7,11 +7,11 @@
   background-image: url('game1.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 110vh;
   width: 100%;
   font-size: 22px;
   font-weight: 900;
-  position: relative;
+  position: absolute;
 }
 
 
@@ -19,5 +19,5 @@
   display: flex;
   justify-content: center;
   border-bottom: 10px solid white;
-  z-index: 195;
+  
 }

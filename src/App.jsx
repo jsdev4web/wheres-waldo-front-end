@@ -16,7 +16,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
         setIsClikced(true)
       }
 
-    const handleDoubleClick = () => {
+    const handleMouseLeave = () => {
 
     // Hide the box as soon as the mouse moves
       setPosition({x: -50, y: -10})
@@ -30,25 +30,25 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
     const handleBoxTwo = () => {
       //alert("You clicked on box one")
-      console.log("Two wuz clicked")
+      console.log(`Two wuz clicked + x: ${position.x} y: ${position.y}`)
     }
 
     const handleBoxThree = () => {
       //alert("You clicked on box one")
-      console.log("Three wuz clicked")
+      console.log(`Three wuz clicked + x: ${position.x} y: ${position.y}`)
     }
 
 
-//useEffect handles the side effects of unwanted rendors
+
     useEffect(() => {
       document.addEventListener('click', handleSingleClick);//if clicked show bo
       if (isClicked) {
-        window.addEventListener('dblclick', handleDoubleClick) //mousemove remove box
+        window.addEventListener('mouseleave', handleMouseLeave) //mousemove remove box
       }
 
       return () => { //remove event listerners
         document.removeEventListener('mousemove', handleSingleClick);
-        window.removeEventListener('mousemove', handleDoubleClick);
+        window.removeEventListener('mousemove', handleMouseLeave);
       };
     }, [isClicked])
 
@@ -56,13 +56,14 @@ import { useCallback, useEffect, useRef, useState } from 'react'
   return (
     <>
     <div className='backgroundContainer'
-
+    
     >
 
 
       {isClicked && (
         <>
           <div 
+          onMouseLeave={handleMouseLeave}
               style={{
                 position:'fixed',
                 display: 'block',
@@ -74,7 +75,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
                 // Center the box on the cursor position
                 transform: 'translate(-50%, -50%)',
                 pointerEvents: 'auto', // Allows events to pass through the box to the document
-                zIndex: 190
+                //zIndex: 190
               }}
           >
             <div className="row-item" onClick={handleBoxOne} >
