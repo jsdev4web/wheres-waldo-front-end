@@ -7,6 +7,10 @@ import { useCallback, useEffect, useRef, useState } from 'react'
     const [isClicked, setIsClikced] = useState(false);
     const boxRef = useRef(null);
 
+    const [ data, setData ] = useState(null);
+    const [ loading, setLoading ] = useState(false);
+    const [ error, setError ] = useState(null);
+
     
     //inner function to component to handle document click
     // sets x and y to 0 axis objects
@@ -23,10 +27,28 @@ import { useCallback, useEffect, useRef, useState } from 'react'
       setIsClikced(false);
   }
 
-    const handleBoxOne = () => {
-      //alert("You clicked on box one")
-      console.log(`One wuz clicked + x: ${position.x} y: ${position.y}`)
-    }
+
+    const handleBoxOne = async () => {
+      setLoading(true)
+      setError(null)
+      //setData(5)
+      console.log(`One wuz clicked + x: ${position.x} y: ${position.y} AND ${data}`)
+      
+      try {
+        const response = await fetch(`http://127.0.0.1:3000/coord/1`, {
+        mode: 'no-cors'
+      })
+        const result = await response.json()
+        setData(result)
+      } catch (err) {
+        setError(err)
+      } finally {
+        setLoading(false)
+      }
+      console.log(loading)
+
+      
+    };
 
     const handleBoxTwo = () => {
       //alert("You clicked on box one")
