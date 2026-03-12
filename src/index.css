@@ -1,7 +1,13 @@
 /*view port = visible area of webpage, vh, vw*/
 /*dimensions of the container*/
 
-
+.timer {
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+}
 
 .backgroundContainer {
   background-image: url('game1.jpg');
@@ -16,6 +22,27 @@
 
 
 .row-item {
+  display: flex;
+  justify-content: center;
+  border-bottom: 10px solid white;
+  
+}
+
+.row-item-one {
+  display: flex;
+  justify-content: center;
+  border-bottom: 10px solid white;
+  
+}
+
+.row-item-two {
+  display: flex;
+  justify-content: center;
+  border-bottom: 10px solid white;
+  
+}
+
+.row-item-three {
   display: flex;
   justify-content: center;
   border-bottom: 10px solid white;
