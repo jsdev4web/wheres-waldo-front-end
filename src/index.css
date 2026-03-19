@@ -10,11 +10,11 @@
 }
 
 .backgroundContainer {
-  background-image: url('game1.jpg');
+  background-image: url('game6.jpg');
   background-size: cover;
   background-position: center;
-  height: 110vh;
-  width: 100%;
+  height: 97vh;
+  width:229vh;
   font-size: 22px;
   font-weight: 900;
   position: absolute;

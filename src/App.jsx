@@ -61,9 +61,11 @@ import { useCallback, useEffect, useRef, useState } from 'react'
     //inner function to component to handle document click
     // sets x and y to 0 axis objects
     const handleSingleClick = async (event) => {
+        
         setPosition({x: event.clientX, y: event.clientY})
         boxRef.current = position
         setIsClikced(true)
+        setAllTrue(isTrue)
 
     }
 
@@ -84,6 +86,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
             timerRef.current = null;
             console.log("Timer stopped successfully.");
             console.log("game over")
+            alert(seconds, " is the finishing time!")
             window.location.reload();
           }
 
@@ -225,6 +228,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
         <>
           <div 
           onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          onPointerDown={(e) => e.stopPropagation()}
           onMouseLeave={handleMouseLeave}
               style={{
                 position:'fixed',
@@ -240,13 +245,16 @@ import { useCallback, useEffect, useRef, useState } from 'react'
                 //zIndex: 190
               }}
           >
-            <div className="row-item-one" onClick={handleBoxOne} >
+            <div className="row-item-one" onClick={(e) => {
+                      e.stopPropagation(); handleBoxOne(e);}}>
               <img src={option1} />
             </div>
-            <div className="row-item-two" onClick={handleBoxTwo} >
+            <div className="row-item-two" onClick={(e) => {
+                      e.stopPropagation(); handleBoxTwo(e);}}>
               <img src={option2} />
               </div>
-            <div className="row-item-three" onClick={handleBoxThree} >
+            <div className="row-item-three" onClick={(e) => {
+                      e.stopPropagation(); handleBoxThree(e);}}>
               <img src={option3} />
               </div>
           </div>
